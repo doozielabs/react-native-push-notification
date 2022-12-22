@@ -144,7 +144,14 @@ public class RNReceivedMessageHandler {
                     // Otherwise wait for construction, then send the notification
                     mReactInstanceManager.addReactInstanceEventListener(new ReactInstanceManager.ReactInstanceEventListener() {
                         public void onReactContextInitialized(ReactContext context) {
-                            handleRemotePushNotification((ReactApplicationContext) context, bundle);
+                            // handleRemotePushNotification((ReactApplicationContext) context, bundle);
+                            try {
+                                Thread.sleep(5000);
+                                handleRemotePushNotification((ReactApplicationContext) context, bundle);
+                            } catch (InterruptedException e) {
+                                // Restore interrupt status.
+                                Thread.currentThread().interrupt();
+                            }
                             mReactInstanceManager.removeReactInstanceEventListener(this);
                         }
                     });
