@@ -146,7 +146,7 @@ public class RNReceivedMessageHandler {
                         public void onReactContextInitialized(ReactContext context) {
                             // handleRemotePushNotification((ReactApplicationContext) context, bundle);
                             try {
-                                Thread.sleep(5000);
+                                Thread.sleep(10000);
                                 handleRemotePushNotification((ReactApplicationContext) context, bundle);
                             } catch (InterruptedException e) {
                                 // Restore interrupt status.
